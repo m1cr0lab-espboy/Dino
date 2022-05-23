@@ -1,0 +1,9 @@
+title: "Dino Game"
+author: "m1cr0lab"
+
+sass:
+  style: compressed
+  sourcemap: never
+
+plugins:
+  - jemoji
