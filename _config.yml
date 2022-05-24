@@ -1,6 +1,8 @@
 title: "Dino Game"
 author: "Steph @ m1cr0lab"
 
+timezone: Indian/Reunion
+
 sass:
   style: compressed
   sourcemap: never

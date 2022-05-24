@@ -5,7 +5,7 @@
 html {
     font-family: Roboto, sans-serif;
     font-size: 12pt;
-    line-height: 1.6em;
+    line-height: 1.75em;
     color: hsl(210, 20%, 50%);
     background-color: hsl(210, 30%, 7%);
 }
@@ -32,7 +32,7 @@ a {
 code {
     padding: .25em .5em;
     border-radius: 4px;
-    font-family: 'Roboto Mono';
+    font-family: 'Roboto Mono', monospace;
     font-size: .9em;
     color: hsl(210, 100%, 80%);
     background-color: hsl(210, 40%, 20%);
@@ -76,6 +76,17 @@ code {
         content: '\f09b';
     }
 
+}
+
+.tag {
+    display: inline-block;
+    padding: .25em .5em;
+    border-radius: 4px;
+    line-height: 1em;
+    font-weight: bold;
+    color: #fff;
+    background-image: linear-gradient(hsl(210, 100%, 50%), hsl(210, 100%, 30%));
+    box-shadow: 0 1px 0 rgba(#fff, .4) inset, 0 2px 4px #000;
 }
 
 .flasher {

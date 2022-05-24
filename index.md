@@ -11,13 +11,16 @@ title: Dino Game
 
 <div class="overview">
     <h1>Dino Game</h1>
-    <p class="credit">&copy; 2022 Steph @ m1cr0lab</p>
+    <p class="credit">&copy; 2022 {{ site.author }}</p>
     <div class="description">
         <p markdown="1">
-            This game is a small remake of the famous Dinosaur Game (also known as the Chrome Dino), a browser game developed by Google and built into the Google Chrome web browser, which can be accessed by inputting <code>chrome://dino</code> into the address bar.
+            This game is a small remake of the famous Dinosaur Game, also known as the Chrome Dino, a browser game developed by Google and built into the Google Chrome web browser, which can be accessed by inputting <code>chrome://dino</code> into the address bar.
         </p>
         <p markdown="1">
-            Dino for ESPboy is a basic casual game, but it's mostly a project to provide you with a fairly complete example of how to make games, using cool graphics and sounds, with the [ESPboy library][espboy].
+            Dino for ESPboy is a basic casual game, but it's mostly a project to provide you with a fairly complete example of how to make games, using cool graphics, sound effects and onboard NeoPixel LED with the [ESPboy library][espboy].
+        </p>
+        <p >
+            Dino is a one button runner game: just press <span class="tag">A</span> button to jump and get the highest score possible.
         </p>
     </div>
     <div class="flasher">
