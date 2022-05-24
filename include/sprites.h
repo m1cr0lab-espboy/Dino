@@ -58,8 +58,8 @@ constexpr uint16_t ICE_CUBE[] PROGMEM = {
 
 };
 
-constexpr uint8_t  DINO_WIDTH       = 15; // 22
-constexpr uint8_t  DINO_HEIGHT      = 17; // 18
+constexpr uint8_t  DINO_WIDTH       = 15;
+constexpr uint8_t  DINO_HEIGHT      = 17;
 constexpr uint16_t DINO_FRAME_SIZE  = DINO_WIDTH * DINO_HEIGHT;
 constexpr uint8_t  DINO_WAIT_FRAMES = 4;
 constexpr uint8_t  DINO_RUN_FRAMES  = 6;

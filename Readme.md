@@ -9,8 +9,8 @@ This is a basic casual game, but it's mostly a project to provide you with a fai
 The code also relies on the following libraries:
 
 - [LovyanGFX][lovyangfx] for graphic display
-- [FixedPointsArduino][fixedpoint] to optimize some arithmetic calculations
 - [ESPboy_Playtune][playtune] for sound effects
+- [FixedPointsArduino][fixedpoint] to optimize some arithmetic calculations
 
 The sound effects have been converted into a format suitable for ESPboy_Playtune library using [midi2tones][midi2tones], which is a very handy tool.
 
