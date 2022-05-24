@@ -17,36 +17,36 @@ class Game {
 
     private:
 
-        static constexpr uint8_t  _DINO_X          = 16;
-        static constexpr uint8_t  _BASELINE        = TFT_HEIGHT - GROUND_SIZE;
-        static constexpr uint8_t  _GROUND_REPEAT   = 1 + TFT_WIDTH / GROUND_SIZE;
-        static constexpr SQ15x16  _DISTANCE_FACTOR = .14f;
-        static constexpr uint8_t  _MAX_CUBE_NUMBER = 10;
-        static constexpr SQ7x8    _MIN_GAP         = 2.75f * ICE_CUBE_SIZE;
-        static constexpr uint8_t  _STAR_NUMBER     = 30;
-        static constexpr uint8_t  _STAR_COLORS     = 5;
-        static constexpr uint16_t _STAR_COLOR[]    = { 0x018c, 0x0339, 0x34df, 0x9e7f, 0x34df };
+        static uint8_t  constexpr _DINO_X          = 16;
+        static uint8_t  constexpr _BASELINE        = TFT_HEIGHT - GROUND_SIZE;
+        static uint8_t  constexpr _GROUND_REPEAT   = 1 + TFT_WIDTH / GROUND_SIZE;
+        static SQ15x16  constexpr _DISTANCE_FACTOR = .14f;
+        static uint8_t  constexpr _MAX_CUBE_NUMBER = 10;
+        static SQ7x8    constexpr _MIN_GAP         = 2.75f * ICE_CUBE_SIZE;
+        static uint8_t  constexpr _STAR_NUMBER     = 30;
+        static uint8_t  constexpr _STAR_COLORS     = 6;
+        static uint16_t constexpr _STAR_COLOR[]    = { 0x0273, 0x0339, 0x34df, 0x9e7f, 0x34df, 0x0339 };
         
         // Initially, I wanted to handle highscore backup with LittleFS,
         // but interference with ESPboyPlaytune caused me to give up.
         // I finally chose to rely on ESP_EEPROM, which is lighter, simpler,
-        // and has no problems with the combined use of ESPboyPlaytune.
+        // and has no issues with the combined use of ESPboyPlaytune.
         //
-        // static constexpr char _DATA_FILE[] = "/dino.txt";
+        // static char constexpr _DATA_FILE[] = "/dino.txt";
         // bool     _has_littlefs;
         // uint16_t _highscore;
 
-        static constexpr uint8_t _EEPROM_ADDR       = 0;
-        static constexpr char    _EEPROM_DATA_TAG[] = "DINO";
+        static uint8_t constexpr _EEPROM_ADDR       = 0;
+        static char    constexpr _EEPROM_DATA_TAG[] = "DINO";
 
         struct EEPROM_Data {
             char     tag[5];
             uint16_t highscore;
         };
 
-        EEPROM_Data _saved_data;
+        EEPROM_Data _backup_data;
 
-        enum class Color : uint8_t {
+        enum class TextColor : uint8_t {
             WHITE,
             RED
         };
@@ -108,13 +108,13 @@ class Game {
         
         void _reset();
         void _spawnCubes();
-        void _spawnCube(const uint8_t x, const uint8_t floor, const bool cracked = false);
+        void _spawnCube(uint8_t const x, uint8_t const floor, bool const cracked = false);
         void _twinkleStars();
         void _scroll();
         void _checkCollisions();
         void _nextLevel();
 
-        inline uint16_t _score() const;
+        inline uint16_t const _score() const;
         
         void _loadHighScore();
         void _saveHighScore();
@@ -124,7 +124,7 @@ class Game {
         void _drawPlay();
         void _drawGameOver();
 
-        void _drawString(const char *str, uint8_t x, const uint8_t y, const Color color = Color::WHITE, const TextAlign align = TextAlign::LEFT) const;
+        void _drawString(char const *str, uint8_t x, uint8_t const y, TextColor const color = TextColor::WHITE, TextAlign const align = TextAlign::LEFT) const;
 
 };
 

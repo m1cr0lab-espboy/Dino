@@ -4,7 +4,7 @@
 // Initially, I wanted to handle highscore backup with LittleFS,
 // but interference with ESPboyPlaytune caused me to give up.
 // I finally chose to rely on ESP_EEPROM, which is lighter, simpler,
-// and has no problems with the combined use of ESPboyPlaytune.
+// and has no issues with the combined use of ESPboyPlaytune.
 //
 // #include <LittleFS.h>
 #include <ESP_EEPROM.h>
@@ -219,7 +219,7 @@ void Game::_spawnCubes() {
 
 }
 
-void Game::_spawnCube(const uint8_t x, const uint8_t floor, const bool cracked) {
+void Game::_spawnCube(uint8_t const x, uint8_t const floor, bool const cracked) {
 
     if (_cubes < _MAX_CUBE_NUMBER) {
 
@@ -242,7 +242,7 @@ void Game::_twinkleStars() {
 
     Star *s;
     for (uint8_t i = 0; i < _STAR_NUMBER; ++i) {
-        if ((millis() >> 7) & 0x1 && random(10) == 0) {
+        if ((millis() >> 6) & 0x1 && random(10) == 0) {
             s = &_star[i];
             s->color_index++;
             if (s->color_index == _STAR_COLORS) s->color_index = 0;
@@ -325,24 +325,24 @@ void Game::_nextLevel() {
 
 }
 
-inline uint16_t Game::_score() const { return static_cast<uint16_t>(_distance); }
+inline uint16_t const Game::_score() const { return static_cast<uint16_t>(_distance); }
 
 void Game::_loadHighScore() {
 
     EEPROM.begin(sizeof(EEPROM_Data));
 
     if (EEPROM.percentUsed() >= 0) {
-        EEPROM.get(_EEPROM_ADDR, _saved_data);
-        if (strcmp(_saved_data.tag, _EEPROM_DATA_TAG) == 0) return;
+        EEPROM.get(_EEPROM_ADDR, _backup_data);
+        if (strcmp(_backup_data.tag, _EEPROM_DATA_TAG) == 0) return;
     }
 
-    strncpy((char*)&_saved_data.tag, _EEPROM_DATA_TAG, sizeof(_EEPROM_DATA_TAG));
-    _saved_data.highscore = 0;
+    strncpy((char*)&_backup_data.tag, _EEPROM_DATA_TAG, sizeof(_EEPROM_DATA_TAG));
+    _backup_data.highscore = 0;
 
     // Initially, I wanted to handle highscore backup with LittleFS,
     // but interference with ESPboyPlaytune caused me to give up.
     // I finally chose to rely on ESP_EEPROM, which is lighter, simpler,
-    // and has no problems with the combined use of ESPboyPlaytune.
+    // and has no issues with the combined use of ESPboyPlaytune.
     //
     // _highscore = 0;
     //
@@ -355,23 +355,23 @@ void Game::_loadHighScore() {
 
 void Game::_saveHighScore() {
 
-    const uint16_t score = _score();
+    uint16_t const score = _score();
 
-    if (score > _saved_data.highscore) {
+    if (score > _backup_data.highscore) {
 
-        _saved_data.highscore = score;
+        _backup_data.highscore = score;
 
-        EEPROM.put(_EEPROM_ADDR, _saved_data);
+        EEPROM.put(_EEPROM_ADDR, _backup_data);
         EEPROM.commit();
 
         // Initially, I wanted to handle highscore backup with LittleFS,
         // but interference with ESPboyPlaytune caused me to give up.
         // I finally chose to rely on ESP_EEPROM, which is lighter, simpler,
-        // and has no problems with the combined use of ESPboyPlaytune.
+        // and has no issues with the combined use of ESPboyPlaytune.
         //
         // if (_has_littlefs) {
         //     File file = LittleFS.open(_DATA_FILE, "w");
-        //     if (file) file.write((const uint8_t*)&_highscore, 2);
+        //     if (file) file.write((uint8_t const *)&_highscore, 2);
         // }
 
     }
@@ -419,7 +419,7 @@ void Game::_drawSplash() {
         TRANS_COLOR
     );
 
-    _drawString("PRESS A", TFT_WIDTH >> 1, y + SPLASH_HEIGHT + 8, Color::WHITE, TextAlign::CENTER);
+    _drawString("PRESS A", TFT_WIDTH >> 1, y + SPLASH_HEIGHT + 8, TextColor::WHITE, TextAlign::CENTER);
 
     _dino->draw(_framebuffer);
 
@@ -458,7 +458,7 @@ void Game::_drawPlay() {
     }
 
     char score[6]; snprintf(score, 6, "%5u", _score());
-    _drawString(score, TFT_WIDTH - 2, 2, Color::WHITE, TextAlign::RIGHT);
+    _drawString(score, TFT_WIDTH - 2, 2, TextColor::WHITE, TextAlign::RIGHT);
 
     for (uint8_t i = 1; i < _level; ++i) {
         _framebuffer->pushImage(
@@ -480,23 +480,23 @@ void Game::_drawGameOver() {
 
     _drawPlay();
 
-    const uint8_t x = TFT_WIDTH >> 1;
-    uint8_t y = TFT_WIDTH / 6;
+    uint8_t const x = TFT_WIDTH >> 1;
+    uint8_t       y = TFT_WIDTH / 6;
 
     if ((millis() >> 8) & 0x1) {
-        _drawString("GAME OVER", x, y, Color::RED, TextAlign::CENTER);
+        _drawString("GAME OVER", x, y, TextColor::RED, TextAlign::CENTER);
     }
 
-    char highscore[6]; snprintf(highscore, 6, "%u", _saved_data.highscore);
-    _drawString("HIGH SCORE", x, y += FONT_SIZE + 6, Color::WHITE, TextAlign::CENTER);
-    _drawString(highscore, x, y + FONT_SIZE + 6, Color::RED, TextAlign::CENTER);
+    char highscore[6]; snprintf(highscore, 6, "%u", _backup_data.highscore);
+    _drawString("HIGH SCORE", x, y += FONT_SIZE + 6, TextColor::WHITE, TextAlign::CENTER);
+    _drawString(highscore, x, y + FONT_SIZE + 6, TextColor::RED, TextAlign::CENTER);
 
 }
 
-void Game::_drawString(const char *str, uint8_t x, const uint8_t y, const Color color, const TextAlign align) const {
+void Game::_drawString(char const *str, uint8_t x, uint8_t const y, TextColor const color, TextAlign const align) const {
 
-    const uint8_t   n    = strlen(str);
-    const uint16_t *font = color == Color::WHITE ? FONT_WHITE : FONT_RED;
+    uint8_t  const  n    = strlen(str);
+    uint16_t const *font = color == TextColor::WHITE ? FONT_WHITE : FONT_RED;
 
     uint8_t k;
     char c;

@@ -2,10 +2,10 @@
 
 #include <Arduino.h>
 
-constexpr uint8_t FONT_SIZE       = 7;
-constexpr uint8_t FONT_FRAME_SIZE = FONT_SIZE * FONT_SIZE;
+uint8_t constexpr FONT_SIZE       = 7;
+uint8_t constexpr FONT_FRAME_SIZE = FONT_SIZE * FONT_SIZE;
 
-constexpr uint16_t FONT_WHITE[] PROGMEM = {
+uint16_t constexpr FONT_WHITE[] PROGMEM = {
 
     // 0
     0x0000, 0x0000, 0xffff, 0xffff, 0xffff, 0x0000, 0x0000,
@@ -351,7 +351,7 @@ constexpr uint16_t FONT_WHITE[] PROGMEM = {
 
 };
 
-constexpr const uint16_t FONT_RED[] PROGMEM = {
+uint16_t constexpr FONT_RED[] PROGMEM = {
 
     // 0
     0x0000, 0x0000, 0x00f8, 0x00f8, 0x00f8, 0x0000, 0x0000,

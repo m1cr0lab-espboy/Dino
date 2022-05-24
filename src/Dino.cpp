@@ -1,7 +1,7 @@
 #include "Dino.h"
 #include "sprites.h"
 
-Dino::Dino(const uint8_t x, const uint8_t baseline)
+Dino::Dino(uint8_t const x, uint8_t const baseline)
 : _x(x)
 , _y(baseline - DINO_HEIGHT)
 , _vy(0)
@@ -9,8 +9,8 @@ Dino::Dino(const uint8_t x, const uint8_t baseline)
 , _jumping(false)
 , _frame(0) {}
 
-const SQ7x8 Dino::y()       const { return _y;       }
-const bool  Dino::jumping() const { return _jumping; }
+SQ7x8 const Dino::y()       const { return _y;       }
+bool  const Dino::jumping() const { return _jumping; }
 
 void Dino::reset() {
     _y       = _baseline - DINO_HEIGHT;
@@ -35,7 +35,7 @@ void Dino::wait() {
     
 }
 
-const bool Dino::collidingWith(const int8_t x, const uint8_t y, const uint8_t size) const {
+bool const Dino::collidingWith(int8_t const x, uint8_t const y, uint8_t const size) const {
 
     return _x + 2               < x + size &&
            _x + DINO_WIDTH  - 2 > x        &&
@@ -44,7 +44,7 @@ const bool Dino::collidingWith(const int8_t x, const uint8_t y, const uint8_t si
 
 }
 
-void Dino::update(const SQ15x16 speed) {
+void Dino::update(SQ15x16 const speed) {
 
     _y  += _vy;
     _vy += GRAVITY;

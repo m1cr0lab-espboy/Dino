@@ -15,7 +15,7 @@
 //
 // };
 
-constexpr uint8_t SFX_JUMP[] PROGMEM = {
+uint8_t constexpr SFX_JUMP[] PROGMEM = {
 
     0x90, 72, 0, 12,
     0x90, 74, 0, 12,
@@ -28,7 +28,7 @@ constexpr uint8_t SFX_JUMP[] PROGMEM = {
 
 };
 
-constexpr uint8_t SFX_NEXT_LEVEL[] PROGMEM = {
+uint8_t constexpr SFX_NEXT_LEVEL[] PROGMEM = {
 
     0x90, 83, 0,  75,
     0x80,
@@ -38,7 +38,7 @@ constexpr uint8_t SFX_NEXT_LEVEL[] PROGMEM = {
 
 };
 
-constexpr uint8_t SFX_GAME_OVER[] PROGMEM = {
+uint8_t constexpr SFX_GAME_OVER[] PROGMEM = {
 
     0x90, 60, 0,  50, 
     0x90, 50, 0, 100, 
@@ -48,7 +48,7 @@ constexpr uint8_t SFX_GAME_OVER[] PROGMEM = {
 
 };
 
-constexpr uint8_t THEME_LOOP[] PROGMEM = {
+uint8_t constexpr THEME_LOOP[] PROGMEM = {
 
     0x90, 57,
 	0x91, 57,

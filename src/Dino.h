@@ -8,29 +8,29 @@ class Dino {
 
     public:
 
-        Dino(const uint8_t x, const uint8_t baseline);
+        Dino(uint8_t const x, uint8_t const baseline);
 
-        const SQ7x8 y()       const;
-        const bool  jumping() const;
+        SQ7x8 const y()       const;
+        bool  const jumping() const;
 
         void reset();
         void jump();
         void wait();
 
-        const bool collidingWith(const int8_t x, const uint8_t y, const uint8_t size) const;
+        bool const collidingWith(int8_t const x, uint8_t const y, uint8_t const size) const;
 
-        void update(const SQ15x16 speed);
+        void update(SQ15x16 const speed);
         void draw(LGFX_Sprite * const framebuffer) const;
 
     private:
 
-        static constexpr uint8_t JUMP    = 4;
-        static constexpr SQ7x8   GRAVITY = .2f;
+        static uint8_t constexpr JUMP    = 4;
+        static SQ7x8   constexpr GRAVITY = .2f;
 
-        const UQ8x8   _x;
+        UQ8x8   const _x;
         SQ7x8         _y;
         SQ7x8         _vy;
-        const uint8_t _baseline;
+        uint8_t const _baseline;
         
         bool    _jumping;
         uint8_t _frame;
