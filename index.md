@@ -17,10 +17,11 @@ title: Dino Game
             This game is a small remake of the famous Dinosaur Game, also known as the Chrome Dino, a browser game developed by Google and built into the Google Chrome web browser, which can be accessed by inputting <code>chrome://dino</code> into the address bar.
         </p>
         <p markdown="1">
-            Dino for ESPboy is a basic casual game, but it's mostly a project to provide you with a fairly complete example of how to make games, using cool graphics, sound effects and onboard NeoPixel LED with the [ESPboy library][espboy].
+            Dino for ESPboy is a basic casual game, but it's mostly a project to provide you with a fairly complete example of how to make nice games with [ESPboy library][espboy], using cool graphics, 8-bit sound effects and the onboard NeoPixel LED.
         </p>
         <p >
-            Dino is a one button runner game: just press <span class="tag">A</span> button to jump and get the highest score possible.
+            Dino is a one button runner game.<br />
+            Just press <span class="tag">A</span> button to jump and get the highest score possible.
         </p>
     </div>
     <div class="flasher">

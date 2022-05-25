@@ -21,7 +21,7 @@ h1 {
     color: #fff;
 }
 
-p { margin: .5em 0; }
+p { margin: 1em 0; }
 
 a {
     text-decoration: none;
@@ -182,40 +182,46 @@ code {
     image-rendering: pixelated;
     filter: drop-shadow(0 4px 8px #000);
 
+    $original_screen_size: 184px;
+    $small_screen_size:    128px;
+    $tiny_screen_size:     92px;
+
     img {
         position: absolute;
         left: 44px;
-        top: 43px;
-        width: 184px;
-        height: 184px;
+        top:  43px;
+        width:  $original_screen_size;
+        height: $original_screen_size;
         image-rendering: pixelated;
     }
 
     &.small {
 
-        $factor: 128 / 184;
+        $factor: $small_screen_size / $original_screen_size;
 
-        width: 272px * $factor;
+        width:  272px * $factor;
         height: 512px * $factor;
 
         img {
-            width: 128px;
-            height: 128px;
+            width:  $small_screen_size;
+            height: $small_screen_size;
             left: 44px * $factor;
-            top: 43px * $factor;
+            top:  43px * $factor;
         }
     }
 
     &.tiny {
+
+        $factor: $tiny_screen_size / $original_screen_size;
         
-        width: 136px;
-        height: 256px;
+        width:  272px * $factor;
+        height: 512px * $factor;
 
         img {
-            width: 92px;
-            height: 92px;
-            left: 22px;
-            top: 22px;
+            width:  $tiny_screen_size;
+            height: $tiny_screen_size;
+            left: 44px * $factor;
+            top:  44px * $factor;
         }
         
     }
