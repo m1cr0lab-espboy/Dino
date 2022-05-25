@@ -24,8 +24,8 @@ class Dino {
 
     private:
 
-        static uint8_t constexpr JUMP    = 4;
-        static SQ7x8   constexpr GRAVITY = .2f;
+        static uint8_t constexpr _JUMP    = 4;
+        static SQ7x8   constexpr _GRAVITY = .2f;
 
         UQ8x8   const _x;
         SQ7x8         _y;

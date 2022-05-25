@@ -20,7 +20,7 @@ void Dino::reset() {
 }
 
 void Dino::jump() {
-    _vy      = -JUMP;
+    _vy      = -_JUMP;
     _jumping = true;
 }
 
@@ -47,7 +47,7 @@ bool const Dino::collidingWith(int8_t const x, uint8_t const y, uint8_t const si
 void Dino::update(SQ15x16 const speed) {
 
     _y  += _vy;
-    _vy += GRAVITY;
+    _vy += _GRAVITY;
 
     if (_y + DINO_HEIGHT > _baseline) {
         _y       = _baseline - DINO_HEIGHT;
@@ -61,8 +61,7 @@ void Dino::update(SQ15x16 const speed) {
 
     if (++counter * speed > 6) {
         counter = 0;
-        _frame++;
-        if (_frame < end_frame) return;
+        _frame++; if (_frame < end_frame) return;
         _frame = start_frame;
     }
 

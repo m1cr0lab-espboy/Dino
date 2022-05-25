@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "font.h"
 #include "sounds.h"
 
 // Initially, I wanted to handle highscore backup with LittleFS,
@@ -51,6 +52,7 @@ void Game::loop() {
         case Stage::PLAY:      _play();   break;
         case Stage::STOP:      _stop();   break;
         case Stage::GAME_OVER: _gameOver();
+        
     }
 
     _framebuffer->pushSprite(0, 0);
@@ -60,9 +62,10 @@ void Game::loop() {
 void Game::_splash() {
 
     if (espboy.button.pressed(Button::ACT)) _stage = Stage::INIT;
-    
+
     _dino->wait();
     _drawSplash();
+
 }
 
 void Game::_init() {
@@ -111,6 +114,7 @@ void Game::_gameOver() {
     }
 
     _drawGameOver();
+
 }
 
 void Game::_restart() {
@@ -209,7 +213,6 @@ void Game::_spawnCubes() {
             _spawnCube(TFT_WIDTH +     ICE_CUBE_SIZE, 0, true);
             _spawnCube(TFT_WIDTH +     ICE_CUBE_SIZE, 1);
             _spawnCube(TFT_WIDTH + 2 * ICE_CUBE_SIZE, 0);
-            break;
 
     }
 
@@ -242,10 +245,9 @@ void Game::_twinkleStars() {
 
     Star *s;
     for (uint8_t i = 0; i < _STAR_NUMBER; ++i) {
-        if ((millis() >> 6) & 0x1 && random(10) == 0) {
+        if (((millis() >> 6) & 0x1) && random(10) == 0) {
             s = &_star[i];
-            s->color_index++;
-            if (s->color_index == _STAR_COLORS) s->color_index = 0;
+            s->color_index++; if (s->color_index == _STAR_COLORS) s->color_index = 0;
         }
     }
 
@@ -280,12 +282,9 @@ void Game::_scroll() {
     }
 
     _distance += _speed * _DISTANCE_FACTOR;
-
     _scroll_x += _speed;
-
-    if (_scroll_x > GROUND_SIZE) {
-        _scroll_x -= GROUND_SIZE;
-    }
+    
+    if (_scroll_x > GROUND_SIZE) _scroll_x -= GROUND_SIZE;
 
 }
 
@@ -458,6 +457,7 @@ void Game::_drawPlay() {
     }
 
     char score[6]; snprintf(score, 6, "%5u", _score());
+
     _drawString(score, TFT_WIDTH - 2, 2, TextColor::WHITE, TextAlign::RIGHT);
 
     for (uint8_t i = 1; i < _level; ++i) {
@@ -488,6 +488,7 @@ void Game::_drawGameOver() {
     }
 
     char highscore[6]; snprintf(highscore, 6, "%u", _backup_data.highscore);
+
     _drawString("HIGH SCORE", x, y += FONT_SIZE + 6, TextColor::WHITE, TextAlign::CENTER);
     _drawString(highscore, x, y + FONT_SIZE + 6, TextColor::RED, TextAlign::CENTER);
 

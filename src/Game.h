@@ -6,7 +6,7 @@
 #include <FixedPointsCommon.h>
 #include "Dino.h"
 #include "sprites.h"
-#include "font.h"
+// #include "font.h"
 
 class Game {
 
@@ -93,11 +93,11 @@ class Game {
             GAME_OVER
         };
     
-        Stage    _stage;
-        uint8_t  _level;
-        SQ15x16  _speed;
-        SQ15x16  _scroll_x;
-        SQ15x16  _distance;
+        Stage   _stage;
+        uint8_t _level;
+        SQ15x16 _speed;
+        SQ15x16 _scroll_x;
+        SQ15x16 _distance;
         
         void _splash();
         void _init();
