@@ -5,8 +5,7 @@
 #include <FixedPoints.h>
 #include <FixedPointsCommon.h>
 #include "Dino.h"
-#include "sprites.h"
-// #include "font.h"
+#include "assets/sprites.h"
 
 class Game {
 

@@ -1,6 +1,6 @@
 #include "Game.h"
-#include "font.h"
-#include "sounds.h"
+#include "assets/font.h"
+#include "assets/sounds.h"
 
 // Initially, I wanted to handle highscore backup with LittleFS,
 // but interference with ESPboyPlaytune caused me to give up.
@@ -230,10 +230,10 @@ void Game::_spawnCube(uint8_t const x, uint8_t const floor, bool const cracked) 
 
         Cube *c = &_cube[_last_cube_index];
 
-        c->x = x;
-        c->floor = floor;
+        c->x       = x;
+        c->floor   = floor;
         c->cracked = cracked;
-        c->solid = true;
+        c->solid   = true;
 
         _cubes++;
 

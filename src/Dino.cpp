@@ -1,5 +1,5 @@
 #include "Dino.h"
-#include "sprites.h"
+#include "assets/sprites.h"
 
 Dino::Dino(uint8_t const x, uint8_t const baseline)
 : _x(x)

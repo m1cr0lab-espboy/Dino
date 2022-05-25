@@ -1,6 +1,6 @@
 #include <ESPboy.h>
 #include "Game.h"
-#include "sprites.h"
+#include "assets/sprites.h"
 
 Game game;
 
