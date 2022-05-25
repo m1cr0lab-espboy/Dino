@@ -1,11 +1,11 @@
 # Dino Game
 
-This game is a remake for the ESPboy handheld of the famous [Dinosaur Game][chromedino] (also known as the Chrome Dino), a browser game developed by Google and built into the Google Chrome web browser. The player guides a pixelated Tyrannosaurus Rex across a side-scrolling landscape, avoiding obstacles to achieve a higher score. The game was created by members of the Chrome UX team in 2014.
+This game is a slight remake for the ESPboy handheld of the famous [Dinosaur Game][chromedino], also known as the Chrome Dino, a browser game developed by Google and built into the Google Chrome web browser. The player guides a pixelated Tyrannosaurus Rex across a side-scrolling landscape, avoiding obstacles to achieve a higher score. The game was created by members of the Chrome UX team in 2014.
 
-**Dino** is a one button runner game.  
-Just press **[A]** button to jump and get the highest score possible.
+Dino for ESPboy is a basic casual game. Still it's mostly a project to provide you with a fairly complete example of how to make nice games with [ESPboy library][espboy], using cool graphics, 8-bit sound effects, and the onboard NeoPixel LED.
 
-This is a basic casual game, but it's mostly a project to provide you with a fairly complete example of how to make nice games with [ESPboy library][espboy], using cool graphics, 8-bit sound effects and the onboard NeoPixel LED.
+**Dino** is a one-button runner game.  
+Just press the **[A]** button to jump and get the highest score possible.
 
 The code also relies on the following libraries:
 
