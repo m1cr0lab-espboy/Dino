@@ -9,7 +9,7 @@ void setup() {
     espboy.begin(
         M1CR0LAB_SIZE,
         M1CR0LAB_SIZE,
-        M1CR0LAB,
+        M1CR0LAB_LOGO,
         1000
     );
     
