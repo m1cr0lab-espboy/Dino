@@ -1,3 +1,4 @@
+#include <Color.h>
 #include "Game.h"
 #include "assets/font.h"
 #include "assets/sounds.h"
@@ -100,7 +101,7 @@ void Game::_stop() {
     _saveHighScore();
     _drawGameOver();
     _sfx->playScore(SFX_GAME_OVER);
-    espboy.pixel.flash(espboy.pixel.hsv(0), 200);
+    espboy.pixel.flash(Color::hsv2rgb(0), 50, 3, 200);
 
 }
 
@@ -216,7 +217,7 @@ void Game::_spawnCubes() {
 
     }
 
-    espboy.pixel.flash(espboy.pixel.hsv(210), 50);
+    espboy.pixel.flash(Color::hsv2rgb(210), 50);
 
     if (--_remaining_clusters == 0) _nextLevel();
 
