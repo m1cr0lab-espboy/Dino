@@ -1,4 +1,3 @@
-#include <Color.h>
 #include "Game.h"
 #include "assets/font.h"
 #include "assets/sounds.h"
