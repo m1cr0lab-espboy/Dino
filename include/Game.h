@@ -45,11 +45,6 @@ class Game {
 
         EEPROM_Data _backup_data;
 
-        enum class TextColor : uint8_t {
-            WHITE,
-            RED
-        };
-
         enum class TextAlign : uint8_t {
             LEFT,
             CENTER,
@@ -123,7 +118,7 @@ class Game {
         void _drawPlay();
         void _drawGameOver();
 
-        void _drawString(char const *str, uint8_t x, uint8_t const y, TextColor const color = TextColor::WHITE, TextAlign const align = TextAlign::LEFT) const;
+        void _drawString(char const *str, uint8_t x, uint8_t const y, uint16_t const color = 0xffff, TextAlign const align = TextAlign::LEFT) const;
 
 };
 

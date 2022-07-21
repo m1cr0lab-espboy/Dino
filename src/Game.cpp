@@ -418,7 +418,7 @@ void Game::_drawSplash() {
         TRANS_COLOR
     );
 
-    _drawString("PRESS A", TFT_WIDTH >> 1, y + SPLASH_HEIGHT + 8, TextColor::WHITE, TextAlign::CENTER);
+    _drawString("PRESS A", TFT_WIDTH >> 1, y + SPLASH_HEIGHT + 8, 0xffff, TextAlign::CENTER);
 
     _dino->draw(_framebuffer);
 
@@ -458,7 +458,7 @@ void Game::_drawPlay() {
 
     char score[6]; snprintf(score, 6, "%5u", _score());
 
-    _drawString(score, TFT_WIDTH - 2, 2, TextColor::WHITE, TextAlign::RIGHT);
+    _drawString(score, TFT_WIDTH - 2, 2, 0xffff, TextAlign::RIGHT);
 
     for (uint8_t i = 1; i < _level; ++i) {
         _framebuffer->pushImage(
@@ -484,20 +484,19 @@ void Game::_drawGameOver() {
     uint8_t       y = TFT_WIDTH / 6;
 
     if ((millis() >> 8) & 0x1) {
-        _drawString("GAME OVER", x, y, TextColor::RED, TextAlign::CENTER);
+        _drawString("GAME OVER", x, y, 0xf800, TextAlign::CENTER);
     }
 
     char highscore[6]; snprintf(highscore, 6, "%u", _backup_data.highscore);
 
-    _drawString("HIGH SCORE", x, y += FONT_SIZE + 6, TextColor::WHITE, TextAlign::CENTER);
-    _drawString(highscore, x, y + FONT_SIZE + 6, TextColor::RED, TextAlign::CENTER);
+    _drawString("HIGH SCORE", x, y += FONT_SIZE + 6, 0xffff, TextAlign::CENTER);
+    _drawString(highscore, x, y + FONT_SIZE + 6, 0xf800, TextAlign::CENTER);
 
 }
 
-void Game::_drawString(char const *str, uint8_t x, uint8_t const y, TextColor const color, TextAlign const align) const {
+void Game::_drawString(char const *str, uint8_t x, uint8_t const y, uint16_t const color, TextAlign const align) const {
 
-    uint8_t  const  n    = strlen(str);
-    uint16_t const *font = color == TextColor::WHITE ? FONT_WHITE : FONT_RED;
+    uint8_t const n = strlen(str);
 
     uint8_t k;
     char c;
@@ -517,13 +516,13 @@ void Game::_drawString(char const *str, uint8_t x, uint8_t const y, TextColor co
         else if (c > 0x2f && c < 0x3a) k = c - 0x30;
         else k = 10 + c - 0x41;
 
-        _framebuffer->pushImage(
+        _framebuffer->drawBitmap(
             x,
             y,
+            FONT + k * FONT_SIZE,
             FONT_SIZE,
             FONT_SIZE,
-            font + k * FONT_FRAME_SIZE,
-            TRANS_COLOR
+            color
         );
 
         x += FONT_SIZE + 1;
