@@ -494,7 +494,7 @@ void Game::_drawGameOver() {
 
 }
 
-void Game::_drawString(char const *str, uint8_t x, uint8_t const y, uint16_t const color, TextAlign const align) const {
+void Game::_drawString(char const * const str, uint8_t x, uint8_t const y, uint16_t const color, TextAlign const align) const {
 
     uint8_t const n = strlen(str);
 

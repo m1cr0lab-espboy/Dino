@@ -24,8 +24,9 @@ class Game {
         static SQ7x8    constexpr _MIN_GAP         = 2.75f * ICE_CUBE_SIZE;
         static uint8_t  constexpr _STAR_NUMBER     = 30;
         static uint8_t  constexpr _STAR_COLORS     = 6;
-        static uint16_t constexpr _STAR_COLOR[]    = { 0x0273, 0x0339, 0x34df, 0x9e7f, 0x34df, 0x0339 };
-        
+
+        static uint16_t const constexpr _STAR_COLOR[] = { 0x0273, 0x0339, 0x34df, 0x9e7f, 0x34df, 0x0339 };
+
         // Initially, I wanted to handle highscore backup with LittleFS,
         // but interference with ESPboyPlaytune caused me to give up.
         // I finally chose to rely on ESP_EEPROM, which is lighter, simpler,
@@ -35,8 +36,8 @@ class Game {
         // bool     _has_littlefs;
         // uint16_t _highscore;
 
-        static uint8_t constexpr _EEPROM_ADDR       = 0;
-        static char    constexpr _EEPROM_DATA_TAG[] = "DINO";
+        static uint8_t    constexpr _EEPROM_ADDR       = 0;
+        static char const constexpr _EEPROM_DATA_TAG[] = "DINO";
 
         struct EEPROM_Data {
             char     tag[5];
@@ -86,20 +87,20 @@ class Game {
             STOP,
             GAME_OVER
         };
-    
+
         Stage   _stage;
         uint8_t _level;
         SQ15x16 _speed;
         SQ15x16 _scroll_x;
         SQ15x16 _distance;
-        
+
         void _splash();
         void _init();
         void _play();
         void _stop();
         void _gameOver();
         void _restart();
-        
+
         void _reset();
         void _spawnCubes();
         void _spawnCube(uint8_t const x, uint8_t const floor, bool const cracked = false);
@@ -118,7 +119,7 @@ class Game {
         void _drawPlay();
         void _drawGameOver();
 
-        void _drawString(char const *str, uint8_t x, uint8_t const y, uint16_t const color = 0xffff, TextAlign const align = TextAlign::LEFT) const;
+        void _drawString(char const * const str, uint8_t x, uint8_t const y, uint16_t const color = 0xffff, TextAlign const align = TextAlign::LEFT) const;
 
 };
 
