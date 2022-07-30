@@ -17,7 +17,7 @@ The sound effects have been converted into a format suitable for ESPboy_Playtune
 
 The cute dino sprite is a creation of [@ArksDigital][arksdigital].
 
-I would like to thank the authors of these tools and assets which were very useful for this project.
+I want to thank the authors of these tools and assets.
 
 
 ## Quick installation on your ESPboy
